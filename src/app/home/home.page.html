@@ -2,7 +2,11 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Starbucks
+      <ion-item>
+        <ion-avatar>
+          <img src="../../assets/logoSmall.png" />
+        </ion-avatar>
+      </ion-item>
     </ion-title>
     <ion-buttons slot="end">
       <ion-button>
@@ -26,12 +30,65 @@
       <h2>Starbucks</h2>
     </div>
     <div id="btnsBanner">
-      <ion-button color="light" fill="outline" shape="round">
-        Encuentranos
+      <ion-button color="light" fill="outline" shape="round" size="small">
+        <ion-avatar>
+          <img src="../../assets/logoSmall.png" />
+        </ion-avatar>
+        <ion-label>Encuentranos</ion-label>
       </ion-button>
-      <ion-button color="light" fill="outline" shape="round">
-        Pide ahora
+      <ion-button color="light" fill="outline" shape="round" size="small">
+        <ion-thumbnail>
+          <img src="../../assets/logoSmall.png" />
+        </ion-thumbnail>
+        <ion-label>Pide ahora</ion-label>
       </ion-button>
     </div>
+  </div>
+  <div id="bebidas">
+    <ion-text color="tertiary">
+      <h1>Bebidas</h1>
+    </ion-text>
+    <ion-list>
+      <ion-list>
+        <ion-item-sliding *ngFor="let bebida of bebidas">
+          <ion-item>
+            <ion-badge slot="end" color="success">{{ bebida.precio }}</ion-badge>
+            <ion-label class="ion-text-wrap">
+              <ion-text color="success">
+                <h2>{{ bebida.nombre }}</h2>
+              </ion-text>
+              <p>{{ bebida.descripcion }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item-options side="start">
+            <ion-item-option (click)="favorite()" color="warning">Favorite</ion-item-option>
+            <ion-item-option color="primary" (click)="share()">Share</ion-item-option>
+          </ion-item-options>
+
+          <ion-item-options side="end">
+            <ion-item-option (click)="buy()" color="success">Buy</ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+
+    </ion-list>
+  </div>
+  <div id="servicios">
+    <ion-card *ngFor="let servicio of servicios">
+      <ion-card-header>
+        <ion-img [src]="servicio.imgUrl"></ion-img>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-label>
+          <ion-text color="primary">
+            <h1>{{ servicio.title }}</h1>
+          </ion-text>
+          <p>{{ servicio.description }}</p>
+        </ion-label>
+        <ion-button expand="block" fill="clear" shape="round" color="success">
+          Mas informacion
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>
