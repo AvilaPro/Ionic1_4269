@@ -1,20 +1,37 @@
+<!-- Este header sera visible solo en dispositivos Android -->
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Starbucks
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="end" name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <!-- Este header sera visible solo en dispositivos iOS -->
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Adentro</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <div id="banner">
+      <img src="../../assets/logoBanner.PNG" alt="logoBanner">
+      <h2>Starbucks</h2>
+    </div>
+    <div id="btnsBanner">
+      <ion-button color="light" fill="outline" shape="round">
+        Encuentranos
+      </ion-button>
+      <ion-button color="light" fill="outline" shape="round">
+        Pide ahora
+      </ion-button>
+    </div>
   </div>
 </ion-content>
