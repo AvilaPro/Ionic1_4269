@@ -9,6 +9,9 @@
       </ion-item>
     </ion-title>
     <ion-buttons slot="end">
+      <ion-button (click)="dolarToday('top')" expand="block" fill="clear" shape="round">
+        <ion-icon name="cash"></ion-icon>
+      </ion-button>
       <ion-button>
         <ion-icon slot="end" name="menu"></ion-icon>
       </ion-button>
@@ -30,7 +33,7 @@
       <h2>Starbucks</h2>
     </div>
     <div id="btnsBanner">
-      <ion-button color="light" fill="outline" shape="round" size="small">
+      <ion-button  color="light" fill="outline" shape="round" size="small">
         <ion-avatar>
           <img src="../../assets/logoSmall.png" />
         </ion-avatar>
@@ -45,6 +48,12 @@
     </div>
   </div>
   <div id="bebidas">
+    <ion-text *ngIf=" formaDePago !== '' " color="warning">
+      <h1>Forma de Pago: {{ formaDePago }}</h1>
+    </ion-text>
+    <ion-text *ngIf=" redSocial !== '' " color="secondary">
+      <h1>Red Social: {{ redSocial }}</h1>
+    </ion-text>
     <ion-text color="tertiary">
       <h1>Bebidas</h1>
     </ion-text>
@@ -59,14 +68,21 @@
               </ion-text>
               <p>{{ bebida.descripcion }}</p>
             </ion-label>
+            <ion-chip color="success" (click)="comprarBebida()">
+              <ion-label>Comprar</ion-label>
+              <ion-icon name="card"></ion-icon>
+            </ion-chip>
+            <!-- <ion-button (click)="comprarBebida()" expand="block" fill="clear" shape="round" color="success">
+              Comprar
+            </ion-button> -->
           </ion-item>
           <ion-item-options side="start">
-            <ion-item-option (click)="favorite()" color="warning">Favorite</ion-item-option>
-            <ion-item-option color="primary" (click)="share()">Share</ion-item-option>
+            <!-- <ion-item-option (click)="favorite()" color="warning">Favorite</ion-item-option> -->
+            <ion-item-option color="primary" (click)="share()">Compartir</ion-item-option>
           </ion-item-options>
 
           <ion-item-options side="end">
-            <ion-item-option (click)="buy()" color="success">Buy</ion-item-option>
+            <ion-item-option (click)="comprarBebida()" color="success">Comprar</ion-item-option>
           </ion-item-options>
         </ion-item-sliding>
       </ion-list>
@@ -85,7 +101,7 @@
           </ion-text>
           <p>{{ servicio.description }}</p>
         </ion-label>
-        <ion-button expand="block" fill="clear" shape="round" color="success">
+        <ion-button (click)="activarModal()" expand="block" fill="clear" shape="round" color="success">
           Mas informacion
         </ion-button>
       </ion-card-content>
