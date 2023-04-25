@@ -1,110 +1,143 @@
-<!-- Este header sera visible solo en dispositivos Android -->
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      <ion-item>
-        <ion-avatar>
-          <img src="../../assets/logoSmall.png" />
-        </ion-avatar>
-      </ion-item>
-    </ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="dolarToday('top')" expand="block" fill="clear" shape="round">
-        <ion-icon name="cash"></ion-icon>
-      </ion-button>
-      <ion-button>
-        <ion-icon slot="end" name="menu"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <!-- Este header sera visible solo en dispositivos iOS -->
-  <ion-header collapse="condense">
+<!-- AQUI EL MENU -->
+<ion-menu contentId="main-content">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Adentro</ion-title>
+      <ion-title>Menu Content</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-menu-toggle auto-hide="false">
+        <ion-item (click)="navigate('/home')">
+          <ion-label>Home</ion-label>
+        </ion-item>
+        <ion-item (click)="navigate('/nosotros')">
+          <ion-label>Nosotros</ion-label>
+        </ion-item>
+        <ion-item (click)="navigate('/ubicacion')">
+          <ion-label>Ubicacion</ion-label>
+        </ion-item>
+         <ion-item (click)="navigate('/register')">
+          <ion-label>Resgistrarse</ion-label>
+        </ion-item>
+        <ion-item (click)="navigate('/slide')">
+          <ion-label>Slides</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<!-- Este header sera visible solo en dispositivos Android -->
+<div id="main-content">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>
+        <ion-item>
+          <ion-avatar>
+            <img src="../../assets/logoSmall.png" />
+          </ion-avatar>
+        </ion-item>
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="dolarToday('top')" expand="block" fill="clear" shape="round">
+          <ion-icon name="cash"></ion-icon>
+        </ion-button>
+        <ion-button>
+          <!-- <ion-icon slot="end" name="menu" size="large"></ion-icon> -->
+          <ion-menu-button></ion-menu-button>
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <div id="banner">
-      <img src="../../assets/logoBanner.PNG" alt="logoBanner">
-      <h2>Starbucks</h2>
-    </div>
-    <div id="btnsBanner">
-      <ion-button  color="light" fill="outline" shape="round" size="small">
-        <ion-avatar>
-          <img src="../../assets/logoSmall.png" />
-        </ion-avatar>
-        <ion-label>Encuentranos</ion-label>
-      </ion-button>
-      <ion-button color="light" fill="outline" shape="round" size="small">
-        <ion-thumbnail>
-          <img src="../../assets/logoSmall.png" />
-        </ion-thumbnail>
-        <ion-label>Pide ahora</ion-label>
-      </ion-button>
-    </div>
-  </div>
-  <div id="bebidas">
-    <ion-text *ngIf=" formaDePago !== '' " color="warning">
-      <h1>Forma de Pago: {{ formaDePago }}</h1>
-    </ion-text>
-    <ion-text *ngIf=" redSocial !== '' " color="secondary">
-      <h1>Red Social: {{ redSocial }}</h1>
-    </ion-text>
-    <ion-text color="tertiary">
-      <h1>Bebidas</h1>
-    </ion-text>
-    <ion-list>
-      <ion-list>
-        <ion-item-sliding *ngFor="let bebida of bebidas">
-          <ion-item>
-            <ion-badge slot="end" color="success">{{ bebida.precio }}</ion-badge>
-            <ion-label class="ion-text-wrap">
-              <ion-text color="success">
-                <h2>{{ bebida.nombre }}</h2>
-              </ion-text>
-              <p>{{ bebida.descripcion }}</p>
-            </ion-label>
-            <ion-chip color="success" (click)="comprarBebida()">
-              <ion-label>Comprar</ion-label>
-              <ion-icon name="card"></ion-icon>
-            </ion-chip>
-            <!-- <ion-button (click)="comprarBebida()" expand="block" fill="clear" shape="round" color="success">
-              Comprar
-            </ion-button> -->
-          </ion-item>
-          <ion-item-options side="start">
-            <!-- <ion-item-option (click)="favorite()" color="warning">Favorite</ion-item-option> -->
-            <ion-item-option color="primary" (click)="share()">Compartir</ion-item-option>
-          </ion-item-options>
+  <ion-content [fullscreen]="true">
+    <!-- Este header sera visible solo en dispositivos iOS -->
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">Adentro</ion-title>
+      </ion-toolbar>
+    </ion-header>
 
-          <ion-item-options side="end">
-            <ion-item-option (click)="comprarBebida()" color="success">Comprar</ion-item-option>
-          </ion-item-options>
-        </ion-item-sliding>
-      </ion-list>
-
-    </ion-list>
-  </div>
-  <div id="servicios">
-    <ion-card *ngFor="let servicio of servicios">
-      <ion-card-header>
-        <ion-img [src]="servicio.imgUrl"></ion-img>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-label>
-          <ion-text color="primary">
-            <h1>{{ servicio.title }}</h1>
-          </ion-text>
-          <p>{{ servicio.description }}</p>
-        </ion-label>
-        <ion-button (click)="activarModal()" expand="block" fill="clear" shape="round" color="success">
-          Mas informacion
+    <div id="container">
+      <div id="banner">
+        <img src="../../assets/logoBanner.PNG" alt="logoBanner">
+        <h2>Starbucks</h2>
+      </div>
+      <div id="btnsBanner">
+        <ion-button color="light" fill="outline" shape="round" size="small">
+          <ion-avatar>
+            <img src="../../assets/logoSmall.png" />
+          </ion-avatar>
+          <ion-label>Encuentranos</ion-label>
         </ion-button>
-      </ion-card-content>
-    </ion-card>
-  </div>
-</ion-content>
+        <ion-button color="light" fill="outline" shape="round" size="small">
+          <ion-thumbnail>
+            <img src="../../assets/logoSmall.png" />
+          </ion-thumbnail>
+          <ion-label>Pide ahora</ion-label>
+        </ion-button>
+      </div>
+    </div>
+    <div id="bebidas">
+      <ion-text *ngIf=" formaDePago !== '' " color="warning">
+        <h1>Forma de Pago: {{ formaDePago }}</h1>
+      </ion-text>
+      <ion-text *ngIf=" redSocial !== '' " color="secondary">
+        <h1>Red Social: {{ redSocial }}</h1>
+      </ion-text>
+      <ion-text color="tertiary">
+        <h1>Bebidas</h1>
+      </ion-text>
+      <ion-list>
+        <ion-list>
+          <ion-item-sliding *ngFor="let bebida of bebidas">
+            <ion-item>
+              <ion-badge slot="end" color="success">{{ bebida.precio }}</ion-badge>
+              <ion-label class="ion-text-wrap">
+                <ion-text color="success">
+                  <h2>{{ bebida.nombre }}</h2>
+                </ion-text>
+                <p>{{ bebida.descripcion }}</p>
+              </ion-label>
+              <ion-chip color="success" (click)="comprarBebida()">
+                <ion-label>Comprar</ion-label>
+                <ion-icon name="card"></ion-icon>
+              </ion-chip>
+              <!-- <ion-button (click)="comprarBebida()" expand="block" fill="clear" shape="round" color="success">
+                Comprar
+              </ion-button> -->
+            </ion-item>
+            <ion-item-options side="start">
+              <!-- <ion-item-option (click)="favorite()" color="warning">Favorite</ion-item-option> -->
+              <ion-item-option color="primary" (click)="share()">Compartir</ion-item-option>
+            </ion-item-options>
+
+            <ion-item-options side="end">
+              <ion-item-option (click)="comprarBebida()" color="success">Comprar</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+
+      </ion-list>
+    </div>
+    <div id="servicios">
+      <ion-card *ngFor="let servicio of servicios">
+        <ion-card-header>
+          <ion-img [src]="servicio.imgUrl"></ion-img>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-label>
+            <ion-text color="primary">
+              <h1>{{ servicio.title }}</h1>
+            </ion-text>
+            <p>{{ servicio.description }}</p>
+          </ion-label>
+          <ion-button (click)="activarModal()" expand="block" fill="clear" shape="round" color="success">
+            Mas informacion
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ion-content>
+</div>

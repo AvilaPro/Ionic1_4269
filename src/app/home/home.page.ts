@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from "@angular/common";
 import { ToastController, AlertController, ActionSheetController, ModalController } from "@ionic/angular";
 
 import { InformacionComponent } from "./informacion/informacion.component";
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -12,9 +13,10 @@ import { InformacionComponent } from "./informacion/informacion.component";
   styleUrls: ['home.page.scss'],
   standalone: true,
   imports: [IonicModule, CommonModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HomePage {
-  constructor(private toastController: ToastController, private alertController: AlertController, private actionSheetCtrl: ActionSheetController, private modalCtrl:ModalController) {}
+  constructor(private toastController: ToastController, private alertController: AlertController, private actionSheetCtrl: ActionSheetController, private modalCtrl:ModalController, private router: Router) {}
   precioDolarBCV = 24.15;
   formaDePago = '';
   redSocial = '';
@@ -181,5 +183,8 @@ export class HomePage {
     if (role === 'confirm') {
       this.message = `Hello, ${data}!`;
     }
+  }
+  navigate(ruta: string){
+    this.router.navigate([ruta]);
   }
 }

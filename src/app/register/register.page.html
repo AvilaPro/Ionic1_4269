@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">register</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <h1>Registrate</h1>
+  <ion-list>
+    <ion-item>
+      <ion-label>Nombre</ion-label>
+      <ion-input [(ngModel)]="nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Correo</ion-label>
+      <ion-input [(ngModel)]="correo"></ion-input>
+    </ion-item>
+  </ion-list>
+  <h3>Preferencias</h3>
+  <ion-item>
+    <ion-checkbox [(ngModel)]="p1" labelPlacement="end">Expresso</ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-checkbox [(ngModel)]="p2" labelPlacement="end">Latte</ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-checkbox [(ngModel)]="p3" labelPlacement="end">Mocaccino</ion-checkbox>
+  </ion-item>
+  <h3>Fecha de Nacimiento</h3>
+  <ion-item>
+    <ion-label>Fecha</ion-label>
+    <ion-datetime [(ngModel)]="fecha" display-format="DD.MM.YYYY HH:mm"></ion-datetime>
+  </ion-item>
+  <h3>Estado Civil</h3>
+  <ion-radio-group value="estado" [(ngModel)]="estado">
+    <ion-radio value="soltero">soltero</ion-radio><br/>
+    <ion-radio value="casado">casado</ion-radio><br />
+    <ion-radio value="divorciado">divorciado</ion-radio><br />
+    <ion-radio value="viudo">viudo</ion-radio>
+  </ion-radio-group>
+  <h3>Ciudad</h3>
+  <ion-list>
+    <ion-item>
+      <ion-select aria-label="ciudad" placeholder="Selecciona" [(ngModel)]="ciudad">
+        <ion-select-option value="barquisimeto">barquisimeto</ion-select-option>
+        <ion-select-option value="valencia">valencia</ion-select-option>
+        <ion-select-option value="caracas">caracas</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="registrar()" expand="block" fill="clear" shape="round">
+    Registrarse
+  </ion-button>
+</ion-content>
